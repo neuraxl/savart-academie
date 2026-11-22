@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sav'art Académie de peinture — Cours d'acrylique en trois niveaux</title>
+<meta name="description" content="Cours de peinture acrylique en ligne de Roger Savard (Sav'art) : débutant, intermédiaire, avancé. Capsules courtes, recettes de mélanges en proportions, méthodes des maîtres.">
+<style>
+:root{
+  --marbre:#f4eddc; --ivoire:#fdfaf1; --papier:#efe5cf;
+  --sienne:#9a5a28; --terracotta:#b0512c; --ocre:#c9962e; --or:#a97e14;
+  --lapis:#22406b; --nuit:#152740; --encre:#2e2417; --doux:#6d5c43;
+  --bord:#d8c69a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--encre);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(1200px 500px at 15% -5%, rgba(201,150,46,.16), transparent 60%),
+    radial-gradient(1000px 480px at 90% 0%, rgba(34,64,107,.12), transparent 55%),
+    repeating-linear-gradient(93deg, rgba(120,96,50,.025) 0 2px, transparent 2px 90px),
+    var(--marbre);
+}
+/* ——— Voûte d'en-tête, esprit chapelle ——— */
+header.hero{
+  background:
+    radial-gradient(900px 300px at 50% -40%, rgba(201,150,46,.35), transparent 65%),
+    linear-gradient(180deg, var(--nuit), var(--lapis) 78%, #2c4d7d);
+  color:#f3e9cf; text-align:center; padding:54px 20px 64px;
+  border-bottom:4px double var(--ocre);
+  border-radius:0 0 50% 50% / 0 0 34px 34px;
+}
+.hero .sur{letter-spacing:.42em; text-transform:uppercase; font-size:.72rem; color:#d9b45c; margin:0 0 10px}
+.hero h1{margin:0; font-size:clamp(2rem,6vw,3.4rem); font-weight:600; letter-spacing:.02em; line-height:1.08}
+.hero h1 .art{color:#e8c96a; font-style:italic}
+.hero .sous{margin:14px auto 4px; max-width:640px; font-size:clamp(.98rem,2.4vw,1.12rem); color:#e9dfc6}
+.hero .prof{margin:6px 0 0; font-style:italic; color:#cbbd97; font-size:.95rem}
+.rule{display:flex; align-items:center; gap:14px; max-width:520px; margin:22px auto 20px; color:#d9b45c}
+.rule::before,.rule::after{content:""; flex:1; border-top:1px solid rgba(217,180,92,.65)}
+.btn-chaine{
+  display:inline-block; padding:12px 26px; border:1.5px solid #d9b45c; border-radius:999px;
+  color:#152740; background:linear-gradient(180deg,#ecd27c,#c9962e); font-weight:700;
+  text-decoration:none; letter-spacing:.04em; box-shadow:0 3px 10px rgba(0,0,0,.35);
+}
+.btn-chaine:hover{filter:brightness(1.07)}
+main{max-width:1280px; margin:0 auto; padding:34px 18px 10px}
+.intro{max-width:820px; margin:0 auto 30px; text-align:center; color:var(--doux); font-size:1.02rem; line-height:1.55}
+.cols{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:start}
+/* ——— Colonnes en arcade ——— */
+.col{background:rgba(253,250,241,.72); border:1px solid var(--bord); border-radius:14px; padding:0 14px 16px;
+     box-shadow:0 2px 14px rgba(90,66,20,.08)}
+.col-head{margin:0 -14px 14px; padding:20px 14px 14px; text-align:center; color:#f7efdb;
+  border-radius:130px 130px 10px 10px / 90px 90px 10px 10px; border-bottom:3px double rgba(255,240,200,.55)}
+.col.n1 .col-head{background:linear-gradient(180deg,#8a4a20,var(--terracotta))}
+.col.n2 .col-head{background:linear-gradient(180deg,#8a6410,var(--ocre))}
+.col.n3 .col-head{background:linear-gradient(180deg,var(--nuit),var(--lapis))}
+.col-head .roman{font-size:1.5rem; letter-spacing:.35em; color:#ecd27c; margin-bottom:2px}
+.col-head h2{margin:0; font-size:1.55rem; letter-spacing:.14em; text-transform:uppercase}
+.col-head p{margin:6px 0 0; font-style:italic; font-size:.9rem; color:#eadfc2}
+.module{margin:20px 2px 10px; font-size:.82rem; letter-spacing:.22em; text-transform:uppercase; color:var(--or);
+  display:flex; align-items:center; gap:10px}
+.module::after{content:""; flex:1; border-top:1px solid var(--bord)}
+/* ——— Cartes ——— */
+.card{background:var(--ivoire); border:1px solid var(--bord); border-radius:10px; overflow:hidden;
+  margin:0 0 12px; box-shadow:0 1px 5px rgba(90,66,20,.10)}
+.card .thumb{display:block; position:relative; aspect-ratio:16/9; background:#ddd0ae; overflow:hidden}
+.card .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.card .play{position:absolute; right:10px; bottom:10px; width:34px; height:34px; border-radius:50%;
+  background:rgba(21,39,64,.82); border:1.5px solid #ecd27c}
+.card .play::after{content:""; position:absolute; left:12px; top:8px; border-style:solid;
+  border-width:8px 0 8px 13px; border-color:transparent transparent transparent #ecd27c}
+.card-body{display:flex; gap:10px; padding:10px 12px 12px; align-items:baseline}
+.card .num{flex:0 0 auto; font-size:.78rem; font-weight:700; color:var(--sienne);
+  border:1px solid var(--bord); border-radius:50%; width:24px; height:24px; line-height:22px; text-align:center}
+.card h3{margin:0; font-size:.99rem; line-height:1.35; font-weight:600}
+.card h3 a{color:var(--encre); text-decoration:none}
+.card h3 a:hover{color:var(--terracotta); text-decoration:underline}
+.card.bientot{border-style:dashed; background:rgba(253,250,241,.55)}
+.card .placeholder{display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg,#e8dcc0,#d9c491 55%,#cbb27a)}
+.bientot-label{letter-spacing:.3em; text-transform:uppercase; font-size:.78rem; color:#5d4a1e}
+.card .etat{margin:2px 0 0; font-style:italic; font-size:.85rem; color:var(--doux)}
+footer{max-width:820px; margin:26px auto 0; padding:22px 20px 40px; text-align:center; color:var(--doux);
+  font-size:.92rem; line-height:1.6}
+footer .sig{color:var(--sienne); font-style:italic}
+@media (max-width:920px){
+  .cols{grid-template-columns:1fr}
+  header.hero{border-radius:0 0 50% 50% / 0 0 20px 20px; padding-bottom:48px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <p class="sur">Sav'art présente</p>
+  <h1>Académie de <span class="art">peinture</span></h1>
+  <p class="sous">Des cours d'acrylique en capsules courtes, du premier kit aux méthodes des maîtres — équipement, technique, couleur.</p>
+  <p class="prof">Par Roger Savard, artiste peintre — Québec</p>
+  <div class="rule">✦ ✦ ✦</div>
+  <a class="btn-chaine" href="https://www.youtube.com/@SavArtAcademie" target="_blank" rel="noopener">▶&nbsp; La chaîne YouTube de l'Académie</a>
+</header>
+<main>
+  <p class="intro">Trois niveaux, un parcours : <strong>Débutant</strong> pour tenir son atelier et poser ses premières touches,
+  <strong>Intermédiaire</strong> pour maîtriser la couleur et la matière, <strong>Avancé</strong> pour travailler comme les maîtres
+  et mener sa démarche jusqu'à l'exposition. Suis les leçons dans l'ordre — chaque miniature mène à sa capsule.</p>
+  <div class="cols">
+<section class="col n1">
+  <header class="col-head">
+    <div class="roman">I</div>
+    <h2>Débutant</h2>
+    <p>Tenir son atelier, poser ses premières touches</p>
+  </header>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/rI_3gOOEqIs" target="_blank" rel="noopener" aria-label="Le kit complet du débutant : tubes, couteaux, chevalet et rinçage">
+    <img src="https://i.ytimg.com/vi/rI_3gOOEqIs/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">1</span><h3><a href="https://www.youtube.com/shorts/rI_3gOOEqIs" target="_blank" rel="noopener">Le kit complet du débutant : tubes, couteaux, chevalet et rinçage</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/FQWI3P-TSno" target="_blank" rel="noopener" aria-label="Commencer l&#x27;acrylique avec 8 couleurs : la palette de départ">
+    <img src="https://i.ytimg.com/vi/FQWI3P-TSno/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">2</span><h3><a href="https://www.youtube.com/shorts/FQWI3P-TSno" target="_blank" rel="noopener">Commencer l&#x27;acrylique avec 8 couleurs : la palette de départ</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/MAKWFBgPCx0" target="_blank" rel="noopener" aria-label="90 % d&#x27;un tableau avec 4 pinceaux : les formes essentielles">
+    <img src="https://i.ytimg.com/vi/MAKWFBgPCx0/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">3</span><h3><a href="https://www.youtube.com/shorts/MAKWFBgPCx0" target="_blank" rel="noopener">90 % d&#x27;un tableau avec 4 pinceaux : les formes essentielles</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/zvST0qCLYwI" target="_blank" rel="noopener" aria-label="Pinceaux qui s&#x27;abîment à l&#x27;acrylique : synthétique ou naturel ?">
+    <img src="https://i.ytimg.com/vi/zvST0qCLYwI/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">4</span><h3><a href="https://www.youtube.com/shorts/zvST0qCLYwI" target="_blank" rel="noopener">Pinceaux qui s&#x27;abîment à l&#x27;acrylique : synthétique ou naturel ?</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/2ARQH10mBGs" target="_blank" rel="noopener" aria-label="Jetable, plastique ou verre : choisir ta palette pour mélanger">
+    <img src="https://i.ytimg.com/vi/2ARQH10mBGs/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">5</span><h3><a href="https://www.youtube.com/shorts/2ARQH10mBGs" target="_blank" rel="noopener">Jetable, plastique ou verre : choisir ta palette pour mélanger</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/urHoiyJXX3I" target="_blank" rel="noopener" aria-label="Palette humide : tes mélanges crémeux pendant des jours">
+    <img src="https://i.ytimg.com/vi/urHoiyJXX3I/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">6</span><h3><a href="https://www.youtube.com/shorts/urHoiyJXX3I" target="_blank" rel="noopener">Palette humide : tes mélanges crémeux pendant des jours</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/2LCX_fqUC7o" target="_blank" rel="noopener" aria-label="Toile, bois ou papier : le même bleu, trois effets">
+    <img src="https://i.ytimg.com/vi/2LCX_fqUC7o/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">7</span><h3><a href="https://www.youtube.com/shorts/2LCX_fqUC7o" target="_blank" rel="noopener">Toile, bois ou papier : le même bleu, trois effets</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/4hHbX2EbG4w" target="_blank" rel="noopener" aria-label="Pinceau ruiné en une heure : le nettoyage qui le sauve">
+    <img src="https://i.ytimg.com/vi/4hHbX2EbG4w/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">8</span><h3><a href="https://www.youtube.com/shorts/4hHbX2EbG4w" target="_blank" rel="noopener">Pinceau ruiné en une heure : le nettoyage qui le sauve</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/_I7A3sTTd6Y" target="_blank" rel="noopener" aria-label="Ne peins pas comme ça ! — Le ciel en dégradé">
+    <img src="https://i.ytimg.com/vi/_I7A3sTTd6Y/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">9</span><h3><a href="https://www.youtube.com/shorts/_I7A3sTTd6Y" target="_blank" rel="noopener">Ne peins pas comme ça ! — Le ciel en dégradé</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/TZCsfoIfYBM" target="_blank" rel="noopener" aria-label="Ne peins pas comme ça ! — L&#x27;arbre « brocoli »">
+    <img src="https://i.ytimg.com/vi/TZCsfoIfYBM/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">10</span><h3><a href="https://www.youtube.com/shorts/TZCsfoIfYBM" target="_blank" rel="noopener">Ne peins pas comme ça ! — L&#x27;arbre « brocoli »</a></h3></div>
+</article>
+<article class="card bientot">
+  <div class="thumb placeholder"><span class="bientot-label">✦ Bientôt ✦</span></div>
+  <div class="card-body"><span class="num">11</span><h3>Quiz couleur Débutant nº 1 — « Jaune citron + noir de mars = ? »</h3><p class="etat">Capsule en préparation</p></div>
+</article>
+<article class="card bientot">
+  <div class="thumb placeholder"><span class="bientot-label">✦ Bientôt ✦</span></div>
+  <div class="card-body"><span class="num">12</span><h3>Les trois gestes de base : glacis, empâtement au couteau, wet-on-wet</h3><p class="etat">Capsule en préparation</p></div>
+</article>
+</section>
+<section class="col n2">
+  <header class="col-head">
+    <div class="roman">II</div>
+    <h2>Intermédiaire</h2>
+    <p>Maîtriser la couleur et la matière</p>
+  </header>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/BdLFPjbafHA" target="_blank" rel="noopener" aria-label="Ta grande toile naît dans un petit carnet : vignettes et trois valeurs">
+    <img src="https://i.ytimg.com/vi/BdLFPjbafHA/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">1</span><h3><a href="https://www.youtube.com/shorts/BdLFPjbafHA" target="_blank" rel="noopener">Ta grande toile naît dans un petit carnet : vignettes et trois valeurs</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/2Zqs60ZTPnA" target="_blank" rel="noopener" aria-label="Quatre finis avec un seul tube : brillant, mat, gel, fluidifiant">
+    <img src="https://i.ytimg.com/vi/2Zqs60ZTPnA/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">2</span><h3><a href="https://www.youtube.com/shorts/2Zqs60ZTPnA" target="_blank" rel="noopener">Quatre finis avec un seul tube : brillant, mat, gel, fluidifiant</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/5u3WHElkC3Q" target="_blank" rel="noopener" aria-label="Médiums acryliques : épaissir, ralentir, fluidifier">
+    <img src="https://i.ytimg.com/vi/5u3WHElkC3Q/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">3</span><h3><a href="https://www.youtube.com/shorts/5u3WHElkC3Q" target="_blank" rel="noopener">Médiums acryliques : épaissir, ralentir, fluidifier</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/hHsSHQX2aKA" target="_blank" rel="noopener" aria-label="La chair nacrée de Rubens : le mélange en 3 pigments">
+    <img src="https://i.ytimg.com/vi/hHsSHQX2aKA/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">4</span><h3><a href="https://www.youtube.com/shorts/hHsSHQX2aKA" target="_blank" rel="noopener">La chair nacrée de Rubens : le mélange en 3 pigments</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/L0SpmnKB26o" target="_blank" rel="noopener" aria-label="Le gris d&#x27;orage sans noir : le mélange gris de Payne">
+    <img src="https://i.ytimg.com/vi/L0SpmnKB26o/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">5</span><h3><a href="https://www.youtube.com/shorts/L0SpmnKB26o" target="_blank" rel="noopener">Le gris d&#x27;orage sans noir : le mélange gris de Payne</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/WsL1Ymv1Bvs" target="_blank" rel="noopener" aria-label="Le vert de Monet sans noir : le mélange viridian">
+    <img src="https://i.ytimg.com/vi/WsL1Ymv1Bvs/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">6</span><h3><a href="https://www.youtube.com/shorts/WsL1Ymv1Bvs" target="_blank" rel="noopener">Le vert de Monet sans noir : le mélange viridian</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/AAJ-ygBwCRQ" target="_blank" rel="noopener" aria-label="Le violet des ombres de Monet : cobalt et alizarine">
+    <img src="https://i.ytimg.com/vi/AAJ-ygBwCRQ/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">7</span><h3><a href="https://www.youtube.com/shorts/AAJ-ygBwCRQ" target="_blank" rel="noopener">Le violet des ombres de Monet : cobalt et alizarine</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/3fxApHHP2zI" target="_blank" rel="noopener" aria-label="L&#x27;ocre chaud de Cézanne : le mélange terre de Provence">
+    <img src="https://i.ytimg.com/vi/3fxApHHP2zI/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">8</span><h3><a href="https://www.youtube.com/shorts/3fxApHHP2zI" target="_blank" rel="noopener">L&#x27;ocre chaud de Cézanne : le mélange terre de Provence</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/sYdCOmda_jA" target="_blank" rel="noopener" aria-label="Un rose de chair crémeux : le mélange rose de Boucher">
+    <img src="https://i.ytimg.com/vi/sYdCOmda_jA/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">9</span><h3><a href="https://www.youtube.com/shorts/sYdCOmda_jA" target="_blank" rel="noopener">Un rose de chair crémeux : le mélange rose de Boucher</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/4hxJgRvhcnA" target="_blank" rel="noopener" aria-label="Jaune de Naples : la lumière chaude en tube">
+    <img src="https://i.ytimg.com/vi/4hxJgRvhcnA/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">10</span><h3><a href="https://www.youtube.com/shorts/4hxJgRvhcnA" target="_blank" rel="noopener">Jaune de Naples : la lumière chaude en tube</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/Hduz6rKqVsM" target="_blank" rel="noopener" aria-label="Frottis : presque pas de peinture, tout l&#x27;effet">
+    <img src="https://i.ytimg.com/vi/Hduz6rKqVsM/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">11</span><h3><a href="https://www.youtube.com/shorts/Hduz6rKqVsM" target="_blank" rel="noopener">Frottis : presque pas de peinture, tout l&#x27;effet</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/O_tuw9QuUOI" target="_blank" rel="noopener" aria-label="Ne peins pas comme ça ! — Les ombres peintes en noir pur">
+    <img src="https://i.ytimg.com/vi/O_tuw9QuUOI/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">12</span><h3><a href="https://www.youtube.com/shorts/O_tuw9QuUOI" target="_blank" rel="noopener">Ne peins pas comme ça ! — Les ombres peintes en noir pur</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/BR6Tjo3EfQ8" target="_blank" rel="noopener" aria-label="Ne peins pas comme ça ! — L&#x27;eau opaque qui devient transparente">
+    <img src="https://i.ytimg.com/vi/BR6Tjo3EfQ8/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">13</span><h3><a href="https://www.youtube.com/shorts/BR6Tjo3EfQ8" target="_blank" rel="noopener">Ne peins pas comme ça ! — L&#x27;eau opaque qui devient transparente</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/nP21DSU7Mpo" target="_blank" rel="noopener" aria-label="Une mer transparente et lumineuse : les glacis en voiles successifs">
+    <img src="https://i.ytimg.com/vi/nP21DSU7Mpo/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">14</span><h3><a href="https://www.youtube.com/shorts/nP21DSU7Mpo" target="_blank" rel="noopener">Une mer transparente et lumineuse : les glacis en voiles successifs</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/BQw1dSibA9Q" target="_blank" rel="noopener" aria-label="Le geste de Riopelle au couteau : décide, pose, ne retouche pas">
+    <img src="https://i.ytimg.com/vi/BQw1dSibA9Q/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">15</span><h3><a href="https://www.youtube.com/shorts/BQw1dSibA9Q" target="_blank" rel="noopener">Le geste de Riopelle au couteau : décide, pose, ne retouche pas</a></h3></div>
+</article>
+<article class="card bientot">
+  <div class="thumb placeholder"><span class="bientot-label">✦ Bientôt ✦</span></div>
+  <div class="card-body"><span class="num">16</span><h3>Peaux lumineuses : la peau noire</h3><p class="etat">Capsule en préparation</p></div>
+</article>
+<article class="card bientot">
+  <div class="thumb placeholder"><span class="bientot-label">✦ Bientôt ✦</span></div>
+  <div class="card-body"><span class="num">17</span><h3>Peaux lumineuses : les peaux asiatiques</h3><p class="etat">Capsule en préparation</p></div>
+</article>
+<article class="card bientot">
+  <div class="thumb placeholder"><span class="bientot-label">✦ Bientôt ✦</span></div>
+  <div class="card-body"><span class="num">18</span><h3>Quiz couleur Intermédiaire nº 1 — « Bleu de cobalt + alizarine = ? »</h3><p class="etat">Capsule en préparation</p></div>
+</article>
+</section>
+<section class="col n3">
+  <header class="col-head">
+    <div class="roman">III</div>
+    <h2>Avancé</h2>
+    <p>Les méthodes des maîtres et le métier d'artiste</p>
+  </header>
+<h3 class="module">Module A — Sous-couches et méthodes des maîtres</h3>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/pbWTE-w7eg0" target="_blank" rel="noopener" aria-label="Ne peins jamais sur blanc : l&#x27;imprimatura des maîtres">
+    <img src="https://i.ytimg.com/vi/pbWTE-w7eg0/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">1</span><h3><a href="https://www.youtube.com/shorts/pbWTE-w7eg0" target="_blank" rel="noopener">Ne peins jamais sur blanc : l&#x27;imprimatura des maîtres</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/IMwB5Smg1Jg" target="_blank" rel="noopener" aria-label="Grisaille : peindre en noir et blanc, colorer après">
+    <img src="https://i.ytimg.com/vi/IMwB5Smg1Jg/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">2</span><h3><a href="https://www.youtube.com/shorts/IMwB5Smg1Jg" target="_blank" rel="noopener">Grisaille : peindre en noir et blanc, colorer après</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/ij_lp75N6WE" target="_blank" rel="noopener" aria-label="Peindre sur du gris : le secret flamand des peaux vivantes (doodverf)">
+    <img src="https://i.ytimg.com/vi/ij_lp75N6WE/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">3</span><h3><a href="https://www.youtube.com/shorts/ij_lp75N6WE" target="_blank" rel="noopener">Peindre sur du gris : le secret flamand des peaux vivantes (doodverf)</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/fGe21dm6Bk4" target="_blank" rel="noopener" aria-label="Un seul tube brun pour tout un tableau : la brunaille">
+    <img src="https://i.ytimg.com/vi/fGe21dm6Bk4/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">4</span><h3><a href="https://www.youtube.com/shorts/fGe21dm6Bk4" target="_blank" rel="noopener">Un seul tube brun pour tout un tableau : la brunaille</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/5mvQTEJmkqY" target="_blank" rel="noopener" aria-label="Sous-couche rouge : des peaux dorées comme à Venise">
+    <img src="https://i.ytimg.com/vi/5mvQTEJmkqY/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">5</span><h3><a href="https://www.youtube.com/shorts/5mvQTEJmkqY" target="_blank" rel="noopener">Sous-couche rouge : des peaux dorées comme à Venise</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/pCNMB4tQQkI" target="_blank" rel="noopener" aria-label="Quatre couleurs pour tout peindre : la palette d&#x27;Apelle">
+    <img src="https://i.ytimg.com/vi/pCNMB4tQQkI/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">6</span><h3><a href="https://www.youtube.com/shorts/pCNMB4tQQkI" target="_blank" rel="noopener">Quatre couleurs pour tout peindre : la palette d&#x27;Apelle</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/ZJ8K3kgh3SE" target="_blank" rel="noopener" aria-label="Sfumato : le dégradé sans lignes de Léonard">
+    <img src="https://i.ytimg.com/vi/ZJ8K3kgh3SE/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">7</span><h3><a href="https://www.youtube.com/shorts/ZJ8K3kgh3SE" target="_blank" rel="noopener">Sfumato : le dégradé sans lignes de Léonard</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/ShqDJrjXbQA" target="_blank" rel="noopener" aria-label="Clair-obscur : une seule lumière dans le noir, comme Caravage">
+    <img src="https://i.ytimg.com/vi/ShqDJrjXbQA/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">8</span><h3><a href="https://www.youtube.com/shorts/ShqDJrjXbQA" target="_blank" rel="noopener">Clair-obscur : une seule lumière dans le noir, comme Caravage</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/UdgRkaEsc5M" target="_blank" rel="noopener" aria-label="Flochetage : la couleur qui vibre sans se mélanger">
+    <img src="https://i.ytimg.com/vi/UdgRkaEsc5M/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">9</span><h3><a href="https://www.youtube.com/shorts/UdgRkaEsc5M" target="_blank" rel="noopener">Flochetage : la couleur qui vibre sans se mélanger</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/yCiGFKmjfB0" target="_blank" rel="noopener" aria-label="Le rouge vitrail : le glacis qui allume une robe">
+    <img src="https://i.ytimg.com/vi/yCiGFKmjfB0/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">10</span><h3><a href="https://www.youtube.com/shorts/yCiGFKmjfB0" target="_blank" rel="noopener">Le rouge vitrail : le glacis qui allume une robe</a></h3></div>
+</article>
+<h3 class="module">Module B — Pigments signature</h3>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/HA0pPWp4pmo" target="_blank" rel="noopener" aria-label="Outremer : le bleu plus cher que l&#x27;or">
+    <img src="https://i.ytimg.com/vi/HA0pPWp4pmo/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">1</span><h3><a href="https://www.youtube.com/shorts/HA0pPWp4pmo" target="_blank" rel="noopener">Outremer : le bleu plus cher que l&#x27;or</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/o4vXZl8sM_4" target="_blank" rel="noopener" aria-label="Le vert secret sous les chairs : la terre verte de Vérone">
+    <img src="https://i.ytimg.com/vi/o4vXZl8sM_4/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">2</span><h3><a href="https://www.youtube.com/shorts/o4vXZl8sM_4" target="_blank" rel="noopener">Le vert secret sous les chairs : la terre verte de Vérone</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/HW4YwzPBnN8" target="_blank" rel="noopener" aria-label="Le rouge de feu de Titien sans mercure : le vermillon">
+    <img src="https://i.ytimg.com/vi/HW4YwzPBnN8/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">3</span><h3><a href="https://www.youtube.com/shorts/HW4YwzPBnN8" target="_blank" rel="noopener">Le rouge de feu de Titien sans mercure : le vermillon</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/_2RFFPnvjms" target="_blank" rel="noopener" aria-label="Le rouge de racines de Rembrandt : la garance">
+    <img src="https://i.ytimg.com/vi/_2RFFPnvjms/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">4</span><h3><a href="https://www.youtube.com/shorts/_2RFFPnvjms" target="_blank" rel="noopener">Le rouge de racines de Rembrandt : la garance</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/fKOPSr1JFlU" target="_blank" rel="noopener" aria-label="Le brun liquide de Rembrandt : le mélange en terres">
+    <img src="https://i.ytimg.com/vi/fKOPSr1JFlU/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">5</span><h3><a href="https://www.youtube.com/shorts/fKOPSr1JFlU" target="_blank" rel="noopener">Le brun liquide de Rembrandt : le mélange en terres</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/OCnm0D4Yg_M" target="_blank" rel="noopener" aria-label="Le jaune doré de Turner : le jaune indien">
+    <img src="https://i.ytimg.com/vi/OCnm0D4Yg_M/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">6</span><h3><a href="https://www.youtube.com/shorts/OCnm0D4Yg_M" target="_blank" rel="noopener">Le jaune doré de Turner : le jaune indien</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/VuqZ_l8A0NU" target="_blank" rel="noopener" aria-label="Le bleu inventé pour peindre le ciel : le céruléen">
+    <img src="https://i.ytimg.com/vi/VuqZ_l8A0NU/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">7</span><h3><a href="https://www.youtube.com/shorts/VuqZ_l8A0NU" target="_blank" rel="noopener">Le bleu inventé pour peindre le ciel : le céruléen</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/hhHufSjL0sQ" target="_blank" rel="noopener" aria-label="Le bleu de verre qui devient gris : le smalt">
+    <img src="https://i.ytimg.com/vi/hhHufSjL0sQ/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">8</span><h3><a href="https://www.youtube.com/shorts/hhHufSjL0sQ" target="_blank" rel="noopener">Le bleu de verre qui devient gris : le smalt</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/hWfPwNZ7fbM" target="_blank" rel="noopener" aria-label="Le vert éclatant qui était un poison : le vert émeraude">
+    <img src="https://i.ytimg.com/vi/hWfPwNZ7fbM/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">9</span><h3><a href="https://www.youtube.com/shorts/hWfPwNZ7fbM" target="_blank" rel="noopener">Le vert éclatant qui était un poison : le vert émeraude</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/TGCFqq3H-yo" target="_blank" rel="noopener" aria-label="Vert-de-gris : le vert empoisonné des anciens">
+    <img src="https://i.ytimg.com/vi/TGCFqq3H-yo/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">10</span><h3><a href="https://www.youtube.com/shorts/TGCFqq3H-yo" target="_blank" rel="noopener">Vert-de-gris : le vert empoisonné des anciens</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/OnCb9PfZvq4" target="_blank" rel="noopener" aria-label="L&#x27;orange citrouille qui brille : le mélange pyrrole">
+    <img src="https://i.ytimg.com/vi/OnCb9PfZvq4/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">11</span><h3><a href="https://www.youtube.com/shorts/OnCb9PfZvq4" target="_blank" rel="noopener">L&#x27;orange citrouille qui brille : le mélange pyrrole</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/JD4IsDH4Uhk" target="_blank" rel="noopener" aria-label="Un noir au reflet bleu : le noir de vigne">
+    <img src="https://i.ytimg.com/vi/JD4IsDH4Uhk/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">12</span><h3><a href="https://www.youtube.com/shorts/JD4IsDH4Uhk" target="_blank" rel="noopener">Un noir au reflet bleu : le noir de vigne</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/Ee5T4Y9Nmmw" target="_blank" rel="noopener" aria-label="Le bleu plus bleu que le bleu : le bleu Klein">
+    <img src="https://i.ytimg.com/vi/Ee5T4Y9Nmmw/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">13</span><h3><a href="https://www.youtube.com/shorts/Ee5T4Y9Nmmw" target="_blank" rel="noopener">Le bleu plus bleu que le bleu : le bleu Klein</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/juXH_s6TJN8" target="_blank" rel="noopener" aria-label="Le premier pigment inventé : le bleu égyptien">
+    <img src="https://i.ytimg.com/vi/juXH_s6TJN8/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">14</span><h3><a href="https://www.youtube.com/shorts/juXH_s6TJN8" target="_blank" rel="noopener">Le premier pigment inventé : le bleu égyptien</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/bRdQ9mdLZy0" target="_blank" rel="noopener" aria-label="Le jaune de plante caché chez Vermeer : la laque de gaude">
+    <img src="https://i.ytimg.com/vi/bRdQ9mdLZy0/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">15</span><h3><a href="https://www.youtube.com/shorts/bRdQ9mdLZy0" target="_blank" rel="noopener">Le jaune de plante caché chez Vermeer : la laque de gaude</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/M5H-RW-bjgE" target="_blank" rel="noopener" aria-label="Le jaune perdu pendant 200 ans : le plomb-étain">
+    <img src="https://i.ytimg.com/vi/M5H-RW-bjgE/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">16</span><h3><a href="https://www.youtube.com/shorts/M5H-RW-bjgE" target="_blank" rel="noopener">Le jaune perdu pendant 200 ans : le plomb-étain</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/0GLlD7Cr7W8" target="_blank" rel="noopener" aria-label="Le pourpre des cardinaux : le caput mortuum">
+    <img src="https://i.ytimg.com/vi/0GLlD7Cr7W8/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">17</span><h3><a href="https://www.youtube.com/shorts/0GLlD7Cr7W8" target="_blank" rel="noopener">Le pourpre des cardinaux : le caput mortuum</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/8dGV-vvgZpc" target="_blank" rel="noopener" aria-label="Le pourpre des empereurs : la pourpre de Tyr">
+    <img src="https://i.ytimg.com/vi/8dGV-vvgZpc/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">18</span><h3><a href="https://www.youtube.com/shorts/8dGV-vvgZpc" target="_blank" rel="noopener">Le pourpre des empereurs : la pourpre de Tyr</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/iC5V3Ch9eWY" target="_blank" rel="noopener" aria-label="Le violet fabriqué avec de l&#x27;or : la pourpre de Cassius">
+    <img src="https://i.ytimg.com/vi/iC5V3Ch9eWY/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">19</span><h3><a href="https://www.youtube.com/shorts/iC5V3Ch9eWY" target="_blank" rel="noopener">Le violet fabriqué avec de l&#x27;or : la pourpre de Cassius</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/x0bI0wO85lg" target="_blank" rel="noopener" aria-label="Le violet né d&#x27;une erreur : la mauvéine de Perkin">
+    <img src="https://i.ytimg.com/vi/x0bI0wO85lg/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">20</span><h3><a href="https://www.youtube.com/shorts/x0bI0wO85lg" target="_blank" rel="noopener">Le violet né d&#x27;une erreur : la mauvéine de Perkin</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/M-2r7d6iLy4" target="_blank" rel="noopener" aria-label="Le bois qui donne 3 couleurs — interdit pendant 80 ans">
+    <img src="https://i.ytimg.com/vi/M-2r7d6iLy4/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">21</span><h3><a href="https://www.youtube.com/shorts/M-2r7d6iLy4" target="_blank" rel="noopener">Le bois qui donne 3 couleurs — interdit pendant 80 ans</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/I2gOs8ktdLQ" target="_blank" rel="noopener" aria-label="Le brun que Burne-Jones a enterré : le brun momie">
+    <img src="https://i.ytimg.com/vi/I2gOs8ktdLQ/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">22</span><h3><a href="https://www.youtube.com/shorts/I2gOs8ktdLQ" target="_blank" rel="noopener">Le brun que Burne-Jones a enterré : le brun momie</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/ZqACCsAc_Tc" target="_blank" rel="noopener" aria-label="Le brun qui ne séchait jamais : le bitume stable">
+    <img src="https://i.ytimg.com/vi/ZqACCsAc_Tc/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">23</span><h3><a href="https://www.youtube.com/shorts/ZqACCsAc_Tc" target="_blank" rel="noopener">Le brun qui ne séchait jamais : le bitume stable</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/IR4mlV9S5Ag" target="_blank" rel="noopener" aria-label="Le gris-bleu né des cendres du lapis : l&#x27;outremer cendre">
+    <img src="https://i.ytimg.com/vi/IR4mlV9S5Ag/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">24</span><h3><a href="https://www.youtube.com/shorts/IR4mlV9S5Ag" target="_blank" rel="noopener">Le gris-bleu né des cendres du lapis : l&#x27;outremer cendre</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/Pon0Gx2YRoQ" target="_blank" rel="noopener" aria-label="Le rouge qui ne vient pas d&#x27;un dragon : le sang-dragon en glacis">
+    <img src="https://i.ytimg.com/vi/Pon0Gx2YRoQ/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">25</span><h3><a href="https://www.youtube.com/shorts/Pon0Gx2YRoQ" target="_blank" rel="noopener">Le rouge qui ne vient pas d&#x27;un dragon : le sang-dragon en glacis</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/KPRMxfcMxXI" target="_blank" rel="noopener" aria-label="Le rouge qui a nommé les miniatures : le minium">
+    <img src="https://i.ytimg.com/vi/KPRMxfcMxXI/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">26</span><h3><a href="https://www.youtube.com/shorts/KPRMxfcMxXI" target="_blank" rel="noopener">Le rouge qui a nommé les miniatures : le minium</a></h3></div>
+</article>
+<h3 class="module">Module C — Démarche et métier d'artiste</h3>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/ySMD_V5ZGXQ" target="_blank" rel="noopener" aria-label="Peindre le même sujet 30 fois : le laboratoire des maîtres">
+    <img src="https://i.ytimg.com/vi/ySMD_V5ZGXQ/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">1</span><h3><a href="https://www.youtube.com/shorts/ySMD_V5ZGXQ" target="_blank" rel="noopener">Peindre le même sujet 30 fois : le laboratoire des maîtres</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/HXg2J0bJG-s" target="_blank" rel="noopener" aria-label="D&#x27;un sujet banal à l&#x27;abstrait : peins le sentiment, pas la copie">
+    <img src="https://i.ytimg.com/vi/HXg2J0bJG-s/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">2</span><h3><a href="https://www.youtube.com/shorts/HXg2J0bJG-s" target="_blank" rel="noopener">D&#x27;un sujet banal à l&#x27;abstrait : peins le sentiment, pas la copie</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/JUcFCpSo-Pk" target="_blank" rel="noopener" aria-label="Encadrer ses toiles sans se ruiner : la caisse américaine">
+    <img src="https://i.ytimg.com/vi/JUcFCpSo-Pk/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">3</span><h3><a href="https://www.youtube.com/shorts/JUcFCpSo-Pk" target="_blank" rel="noopener">Encadrer ses toiles sans se ruiner : la caisse américaine</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/O4er14_REXg" target="_blank" rel="noopener" aria-label="Vernir sans jaunir : le satiné et le geste sans traces">
+    <img src="https://i.ytimg.com/vi/O4er14_REXg/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">4</span><h3><a href="https://www.youtube.com/shorts/O4er14_REXg" target="_blank" rel="noopener">Vernir sans jaunir : le satiné et le geste sans traces</a></h3></div>
+</article>
+<article class="card">
+  <a class="thumb" href="https://www.youtube.com/shorts/l7NVVILhszI" target="_blank" rel="noopener" aria-label="Transporter ses toiles sans les abîmer : glassine et carton">
+    <img src="https://i.ytimg.com/vi/l7NVVILhszI/hqdefault.jpg" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  <div class="card-body"><span class="num">5</span><h3><a href="https://www.youtube.com/shorts/l7NVVILhszI" target="_blank" rel="noopener">Transporter ses toiles sans les abîmer : glassine et carton</a></h3></div>
+</article>
+<article class="card bientot">
+  <div class="thumb placeholder"><span class="bientot-label">✦ Bientôt ✦</span></div>
+  <div class="card-body"><span class="num">6</span><h3>De la vignette à la grande toile : la méthode complète</h3><p class="etat">Capsule en préparation</p></div>
+</article>
+<article class="card bientot">
+  <div class="thumb placeholder"><span class="bientot-label">✦ Bientôt ✦</span></div>
+  <div class="card-body"><span class="num">7</span><h3>Quiz couleur Avancé nº 1 — « Rouge indien + violet dioxazine = ? »</h3><p class="etat">Capsule en préparation</p></div>
+</article>
+</section>
+  </div>
+</main>
+<footer>
+  <p>Les capsules des cours arrivent sur la chaîne <strong>Sav'art Académie de peinture</strong> (@SavArtAcademie) ;
+  en attendant, les leçons déjà en ligne sont présentées depuis la chaîne Sav'art — Trucs et astuces peinture (@savartastuces).</p>
+  <p class="sig">Sav'art Académie de peinture — Roger Savard, Québec — 2026</p>
+  <p>⚠️ Attention : ces contenus ont été générés en partie avec l'intelligence artificielle.</p>
+</footer>
+</body>
+</html>
